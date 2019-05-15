@@ -1,7 +1,10 @@
 import React from 'react';
 import gql from 'graphql-tag';
 import { Query } from 'react-apollo';
+import Head from 'next/head';
+import Link from 'next/link';
 import PaginationStyles from './styles/PaginationStyles';
+import { perPage } from '../config';
 
 const PAGINATION_QUERY = gql`
   query PAGINATION_QUERY {
@@ -14,18 +17,49 @@ const PAGINATION_QUERY = gql`
 `;
 
 const Pagination = props => (
-  <PaginationStyles>
-    <Query query={PAGINATION_QUERY}>
-      {({ data, loading, error }) => {
-        if (loading) return <p>Loading...</p>;
-        return (
+  <Query query={PAGINATION_QUERY}>
+    {({ data, loading, error }) => {
+      if (loading) return <p>Loading...</p>;
+      const { count } = data.itemsConnection.aggregate;
+      const pages = Math.ceil(count / perPage);
+      const { page } = props;
+      return (
+        <PaginationStyles>
+          <Head>
+            <title>
+              Danny's Store - Page {page}/{pages}
+            </title>
+          </Head>
+          <Link
+            prefetch
+            href={{
+              pathname: 'buy',
+              query: { page: page - 1 },
+            }}
+          >
+            <a className="prev" aria-disabled={page <= 1}>
+              ←
+            </a>
+          </Link>
           <p>
-            There's a total of: {data.itemsConnection.aggregate.count} items
+            Page {page}/{pages}
           </p>
-        );
-      }}
-    </Query>
-  </PaginationStyles>
+          <p>Total: {count} items</p>
+          <Link
+            prefetch
+            href={{
+              pathname: 'buy',
+              query: { page: page + 1 },
+            }}
+          >
+            <a className="prev" aria-disabled={page >= pages}>
+              →
+            </a>
+          </Link>
+        </PaginationStyles>
+      );
+    }}
+  </Query>
 );
 
 export default Pagination;

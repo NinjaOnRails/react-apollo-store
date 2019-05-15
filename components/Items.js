@@ -32,9 +32,10 @@ const ItemsList = styled.div`
 
 class Items extends Component {
   render() {
+    const { page } = this.props;
     return (
       <Center>
-        <Pagination />
+        <Pagination page={page} />
         <Query query={ALL_ITEMS_QUERY}>
           {({ data, error, loading }) => {
             if (loading) return <p>Loading...</p>;
@@ -48,7 +49,7 @@ class Items extends Component {
             );
           }}
         </Query>
-        <Pagination />
+        <Pagination page={page} />
       </Center>
     );
   }
