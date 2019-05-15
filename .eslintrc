@@ -35,9 +35,18 @@
         "argsIgnorePattern": "res|next|^err"
       }
     ],
+    "no-shadow": [
+      2,
+      {
+        "hoist": "all",
+        "allow": ["resolve", "reject", "done", "next", "err", "error"]
+      }
+    ],
+    "no-alert": 0,
     "react/react-in-jsx-scope": 0,
     "react/prefer-stateless-function": 0,
     "react/no-unescaped-entities": 0,
+    "react/forbid-prop-types": 0,
     "prettier/prettier": [
       "error",
       {
