@@ -44,10 +44,9 @@ export class Register extends Component {
               }}
             >
               <fieldset>
-                <h2>Register Form</h2>
+                <h2>Register</h2>
                 <Error error={error} />
                 <label htmlFor="name">
-                  Name
                   <input
                     type="text"
                     name="name"
@@ -57,7 +56,6 @@ export class Register extends Component {
                   />
                 </label>
                 <label htmlFor="email">
-                  email
                   <input
                     type="email"
                     name="email"
@@ -67,7 +65,6 @@ export class Register extends Component {
                   />
                 </label>
                 <label htmlFor="password">
-                  Password
                   <input
                     type="password"
                     name="password"
