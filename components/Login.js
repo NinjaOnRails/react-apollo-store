@@ -5,13 +5,9 @@ import Form from './styles/Form';
 import Error from './ErrorMessage';
 import { CURRENT_USER_QUERY } from './User';
 
-const CREATE_USER_MUTATION = gql`
-  mutation CREATE_USER_MUTATION(
-    $name: String!
-    $email: String!
-    $password: String!
-  ) {
-    createUser(name: $name, email: $email, password: $password) {
+const LOGIN_MUTATION = gql`
+  mutation LOGIN_MUTATION($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
       id
       name
       email
@@ -19,9 +15,8 @@ const CREATE_USER_MUTATION = gql`
   }
 `;
 
-export class Register extends Component {
+export class Login extends Component {
   state = {
-    name: '',
     email: '',
     password: '',
   };
@@ -31,35 +26,26 @@ export class Register extends Component {
   };
 
   render() {
-    const { name, email, password } = this.state;
+    const { email, password } = this.state;
     return (
       <Mutation
-        mutation={CREATE_USER_MUTATION}
+        mutation={LOGIN_MUTATION}
         variables={this.state}
         refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       >
-        {(createUser, { error, loading }) => {
+        {(login, { error, loading }) => {
           return (
             <Form
               method="post"
               onSubmit={async e => {
                 e.preventDefault();
-                await createUser();
-                this.setState({ name: '', email: '', password: '' });
+                await login();
+                this.setState({ email: '', password: '' });
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>
-                <h2>Register for a new account</h2>
+                <h2>Log into an existing account</h2>
                 <Error error={error} />
-                <label htmlFor="name">
-                  <input
-                    type="text"
-                    name="name"
-                    placeholder="name"
-                    value={name}
-                    onChange={this.saveToState}
-                  />
-                </label>
                 <label htmlFor="email">
                   <input
                     type="email"
@@ -78,7 +64,7 @@ export class Register extends Component {
                     onChange={this.saveToState}
                   />
                 </label>
-                <button type="submit">Register</button>
+                <button type="submit">Login</button>
               </fieldset>
             </Form>
           );
@@ -88,4 +74,4 @@ export class Register extends Component {
   }
 }
 
-export default Register;
+export default Login;

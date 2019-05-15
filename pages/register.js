@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Register from '../components/Register';
+import Login from '../components/Login';
 
 const Columns = styled.div`
   display: grid;
@@ -10,6 +11,7 @@ const Columns = styled.div`
 const RegisterPage = () => (
   <Columns>
     <Register />
+    <Login />
   </Columns>
 );
 

@@ -3,29 +3,33 @@ import NavStyles from './styles/NavStyles';
 import User from './User';
 
 const Nav = () => (
-  <NavStyles>
-    <User>
-      {({ data: { me } }) => {
-        if (me) return <p>{me.name}</p>;
-        return null;
-      }}
-    </User>
-    <Link href="/buy">
-      <a>Buy</a>
-    </Link>
-    <Link href="/sell">
-      <a>Sell</a>
-    </Link>
-    <Link href="/register">
-      <a>Register</a>
-    </Link>
-    <Link href="/orders">
-      <a>My Orders</a>
-    </Link>
-    <Link href="/me">
-      <a>My Account</a>
-    </Link>
-  </NavStyles>
+  <User>
+    {({ data: { me } }) => (
+      <NavStyles>
+        <Link href="/buy">
+          <a>Buy</a>
+        </Link>
+        {me && (
+          <>
+            <Link href="/sell">
+              <a>Sell</a>
+            </Link>
+            <Link href="/orders">
+              <a>My Orders</a>
+            </Link>
+            <Link href="/me">
+              <a>My Account</a>
+            </Link>
+          </>
+        )}
+        {!me && (
+          <Link href="/register">
+            <a>Login/Register</a>
+          </Link>
+        )}
+      </NavStyles>
+    )}
+  </User>
 );
 
 export default Nav;
