@@ -3,7 +3,6 @@ import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
 import Router from 'next/router';
 import Form from './styles/Form';
-import formatMoney from '../lib/formatMoney';
 import Error from './ErrorMessage';
 
 const CREATE_ITEM_MUTATION = gql`
@@ -31,13 +30,12 @@ export class NewItem extends Component {
     title: '',
     description: '',
     image: '',
-    largeImage: '',
     price: 0,
   };
 
   handleChange = e => {
     const { name, type, value } = e.target;
-    const val = type === 'number' ? parseFloat(value) : value;
+    const val = type === 'number' && value !== '' ? parseFloat(value) : value;
     this.setState({ [name]: val });
   };
 
@@ -63,7 +61,7 @@ export class NewItem extends Component {
   };
 
   render() {
-    const { title, price, description, image, largeImage } = this.state;
+    const { title, price, description, image } = this.state;
 
     return (
       <Mutation mutation={CREATE_ITEM_MUTATION} variables={this.state}>
