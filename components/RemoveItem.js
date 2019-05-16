@@ -32,9 +32,12 @@ class RemoveItem extends Component {
       >
         {(deleteItem, { error }) => (
           <button
+            type="button"
             onClick={() => {
               if (confirm('Permanently remove this item?')) {
-                deleteItem();
+                deleteItem().catch(err => {
+                  alert(err.message);
+                });
               }
             }}
           >
