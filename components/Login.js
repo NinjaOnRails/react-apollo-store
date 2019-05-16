@@ -64,7 +64,7 @@ export class Login extends Component {
                     onChange={this.saveToState}
                   />
                 </label>
-                <button type="submit">Login</button>
+                <button type="submit">Log In</button>
               </fieldset>
             </Form>
           );
