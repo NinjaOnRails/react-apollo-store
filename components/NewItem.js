@@ -25,7 +25,7 @@ const CREATE_ITEM_MUTATION = gql`
   }
 `;
 
-export class NewItem extends Component {
+class NewItem extends Component {
   state = {
     title: '',
     description: '',

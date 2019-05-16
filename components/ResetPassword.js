@@ -24,7 +24,7 @@ const RESET_PASSWORD_MUTATION = gql`
   }
 `;
 
-export class ResetPassword extends Component {
+class ResetPassword extends Component {
   static propTypes = {
     resetToken: PropTypes.string.isRequired,
   };

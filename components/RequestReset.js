@@ -12,7 +12,7 @@ const REQUEST_RESET_MUTATION = gql`
   }
 `;
 
-export class RequestReset extends Component {
+class RequestReset extends Component {
   state = {
     email: '',
     message: '',

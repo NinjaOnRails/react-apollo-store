@@ -1,8 +1,11 @@
 import NewItem from '../components/NewItem';
+import LoginNotice from '../components/LoginNotice';
 
 const Sell = props => (
   <div>
-    <NewItem />
+    <LoginNotice>
+      <NewItem />
+    </LoginNotice>
   </div>
 );
 

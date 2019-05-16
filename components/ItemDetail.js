@@ -35,7 +35,7 @@ const ITEM_DETAIL_QUERY = gql`
   }
 `;
 
-export class ItemDetail extends Component {
+class ItemDetail extends Component {
   render() {
     const { id } = this.props;
     return (

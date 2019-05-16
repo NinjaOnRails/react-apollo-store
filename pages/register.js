@@ -18,3 +18,4 @@ const RegisterPage = () => (
 );
 
 export default RegisterPage;
+export { Columns };

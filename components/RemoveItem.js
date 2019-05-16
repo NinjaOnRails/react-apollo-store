@@ -11,7 +11,7 @@ const DELETE_ITEM_MUTATION = gql`
   }
 `;
 
-export class RemoveItem extends Component {
+class RemoveItem extends Component {
   update = (cache, payload) => {
     const data = cache.readQuery({ query: ALL_ITEMS_QUERY });
     data.items = data.items.filter(

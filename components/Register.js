@@ -49,7 +49,7 @@ export class Register extends Component {
               }}
             >
               <fieldset disabled={loading} aria-busy={loading}>
-                <h2>Register for a new account</h2>
+                <h2>Create a new account</h2>
                 <Error error={error} />
                 <label htmlFor="name">
                   <input

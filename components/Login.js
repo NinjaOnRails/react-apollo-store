@@ -15,7 +15,7 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
-export class Login extends Component {
+class Login extends Component {
   state = {
     email: '',
     password: '',
