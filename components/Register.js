@@ -19,7 +19,7 @@ const CREATE_USER_MUTATION = gql`
   }
 `;
 
-export class Register extends Component {
+class Register extends Component {
   state = {
     name: '',
     email: '',
@@ -89,3 +89,4 @@ export class Register extends Component {
 }
 
 export default Register;
+export { CREATE_USER_MUTATION };
