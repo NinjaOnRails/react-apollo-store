@@ -41,10 +41,10 @@ class ItemDetail extends Component {
     return (
       <Query query={ITEM_DETAIL_QUERY} variables={{ id }}>
         {({ error, loading, data }) => {
-          const { title, description, largeImage } = data.item;
           if (error) return <Error error={error} />;
           if (loading) return <p>Loading...</p>;
           if (!data.item) return <p>No Item Found for {id}</p>;
+          const { title, description, largeImage } = data.item;
           return (
             <ItemDetailStyles>
               <Head>
@@ -64,3 +64,4 @@ class ItemDetail extends Component {
 }
 
 export default ItemDetail;
+export { ITEM_DETAIL_QUERY };
