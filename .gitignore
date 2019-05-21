@@ -4,5 +4,5 @@ node_modules/
 .next/
 .build/
 layout.md
-variables.env
+variables.env/
 config/
